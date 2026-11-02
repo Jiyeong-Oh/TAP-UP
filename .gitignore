@@ -1,0 +1,14 @@
+__pycache__/
+*.pyc
+data/
+datasets/
+cache/
+outputs/
+external_repos/
+checkpoints_pretrained/
+checkpoints_ssl/
+checkpoints_stage2/
+*.nii.gz
+*.npy
+*.pth
+*.pt

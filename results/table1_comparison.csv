@@ -1,0 +1,10 @@
+model,auc,sensitivity,specificity
+TAP-UP,0.725,0.833,0.667
+Clinical model (logistic regression),0.615,0.583,0.806
+Radiomics + PSA + stage (Papp et al.),0.440,0.750,0.319
+3D ResNet-18,0.509,0.500,0.667
+3D DenseNet-121,0.554,1.000,0.264
+"Swin UNETR, CT-pretrained",0.618,0.583,0.750
+"Triad, linear probe",0.507,0.583,0.639
+"Triad, LoRA",0.443,0.583,0.514
+"MASS, linear probe",0.677,0.667,0.639

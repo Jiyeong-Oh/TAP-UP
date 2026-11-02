@@ -1,0 +1,34 @@
+diff --git a/simmim_advanced.py b/simmim_advanced.py
+index 4ed4491..1a9d18c 100644
+--- a/simmim_advanced.py
++++ b/simmim_advanced.py
+@@ -73,9 +73,10 @@ class UNetEncoderForMAE(nn.Module):
+ 
+ 
+ class SwinTransformerSkipForSimMIM(nn.Module):
+-    def __init__(self, embed_dim=None):
++    def __init__(self, embed_dim=None, in_chans=1, use_checkpoint=True):
+         super(SwinTransformerSkipForSimMIM, self).__init__()
+         self.embed_dim = embed_dim
++        self.in_chans = in_chans
+         self.mask_token = nn.Parameter(torch.zeros(1, 1, self.embed_dim))
+         trunc_normal_(self.mask_token, mean=0.0, std=0.02)
+         self.out_channels = embed_dim * 16
+@@ -88,7 +89,7 @@ class SwinTransformerSkipForSimMIM(nn.Module):
+         )
+ 
+         self.swinViT = SwinViT(
+-            in_chans=1,
++            in_chans=in_chans,
+             embed_dim=self.embed_dim,
+             window_size=(7, 7, 7),
+             patch_size=(2, 2, 2),
+@@ -100,7 +101,7 @@ class SwinTransformerSkipForSimMIM(nn.Module):
+             attn_drop_rate=0.0,
+             drop_path_rate=0.0,
+             norm_layer=torch.nn.LayerNorm,
+-            use_checkpoint=True,
++            use_checkpoint=use_checkpoint,
+             spatial_dims=3,
+             use_v2=True,
+         )
